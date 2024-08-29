@@ -27,19 +27,25 @@ export default function Signup() {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView>
-          <View className='bg-white p-5' style={{borderWidth:10}}>
-            <View className=''>
-              <Image source={images.onboarding1} className='w-full h-1/2' />
-              <Text className='text-2xl text-black font-RobotoBold'>Create Your Account</Text>
+          <View className='flex-1 bg-white h-full'>
+              <Image source={images.signUpCar} className='w-full' resizeMode="contain" />
+            <View className='relative w-full px-5 mb-5'>
+              <Text className='text-3xl text-black font-RobotoBold'>Create Your Account</Text>
             </View>
-            <View className='p-5'>
-              <InputField label='Name' placeholder='Enter your name' value={form.name} onChangeText={(value) => setForm({...form, name: value})} />
-              <InputField label='Email' placeholder='Enter your Email' value={form.email} onChangeText={(value) => setForm({...form, email: value})} />
-              <InputField label='password' secureTextEntry={true} placeholder='Enter Password' value={form.password} onChangeText={(value) => setForm({...form, password: value})} />
+            <View className='px-5'>
+              <InputField placeholder='Enter your name' value={form.name} onChangeText={(value) => setForm({...form, name: value})} />
+              <InputField placeholder='Enter your Email' value={form.email} onChangeText={(value) => setForm({...form, email: value})} />
+              <InputField secureTextEntry={true} placeholder='Enter Password' value={form.password} onChangeText={(value) => setForm({...form, password: value})} />
+              <Link href={'/sign-in'} className='text-sm text-general-200 mt-2'>
+                <Text>By signing up. you're agree to our </Text>
+                <Text className='text-primary-500'>Terms & Conditions </Text>
+                <Text className='text-primary-500'>and </Text>
+                <Text className='text-primary-500'> Privacy Policy</Text>
+              </Link>
               <CustomButton title='Sign Up' onPress={onSignUpPress} classname='mt-6' />
               {/* OAuth */}
-              <OAuth />
-              <Link href={'/sign-in'} className='text-lg text-center text-general-200 mt-10'>
+              {/* <OAuth /> */}
+              <Link href={'/sign-in'} className='text-sm text-center text-general-200 my-10'>
                 <Text>Already have an account? </Text>
                 <Text className='text-primary-500'>Log In</Text>
               </Link>
