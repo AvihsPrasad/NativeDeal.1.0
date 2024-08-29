@@ -13,7 +13,7 @@ export default function Welcome() {
   return (
     <SafeAreaView className="flex-1 h-full items-center justify-between bg-white">
       <TouchableOpacity
-        onPress={() => router.replace("/(auth)/sign-up")}
+        onPress={() => router.push("/(auth)/sign-up")}
         className="w-full flex justify-end items-end p-5"
       >
         <Text className="text-black text-md font-RobotoBold">Skip</Text>
@@ -54,7 +54,7 @@ export default function Welcome() {
             bgVariant={"secondary"}
             onPress={() =>
               isLastSlide
-                ? router.replace("/(auth)/sign-up")
+                ? router.push("/(auth)/sign-up")
                 : swiperRef.current?.scrollBy(1)
             }
             classname="flex-1 mx-5 mt-10 mb-5"
@@ -63,7 +63,7 @@ export default function Welcome() {
             title={"LogIn"}
             onPress={() =>
               isLastSlide
-                ? router.replace("/(auth)/sign-in")
+                ? router.push("/(auth)/sign-in")
                 : swiperRef.current?.scrollBy(1)
             }
             classname="flex-1 mt-10 mx-5 mb-5"
@@ -75,7 +75,7 @@ export default function Welcome() {
         title={isLastSlide ? "Get Started" : "Next"}
         onPress={() =>
           isLastSlide
-            ? router.replace("/(auth)/sign-up")
+            ? router.push("/(auth)/sign-up")
             : swiperRef.current?.scrollBy(1)
         }
         classname="w-11/12 mt-10 mb-5"

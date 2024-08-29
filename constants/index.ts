@@ -30,14 +30,26 @@ import google from "@/assets/images/react-logo.png";
 import onboarding1 from "@/assets/welcome/welcome1.png";
 import onboarding2 from "@/assets/welcome/welcome2.png";
 import onboarding3 from "@/assets/welcome/welcome3.png";
-import signUpCar from "@/assets/images/partial-react-logo.png";
+// import signUpCar from "@/assets/images/partial-react-logo.png";
+import signUpImage from "@/assets/images/signup.png";
+import loginImage from "@/assets/images/login.png";
+import BannerOne from "@/assets/banner/banner1.png"
+import BannerTwo from "@/assets/banner/banner2.png"
+import BannerThree from "@/assets/banner/banner3.png"
+import BannerFour from "@/assets/banner/banner4.png"
+import BannerFive from "@/assets/banner/banner5.png"
 
 export const images = {
     onboarding1,
     onboarding2,
     onboarding3,
-    // getStarted,
-    signUpCar,
+    BannerOne,
+    BannerTwo,
+    BannerThree,
+    BannerFour,
+    BannerFive,
+    loginImage,
+    signUpImage,
     // check,
     // noResult,
     // message,
@@ -95,6 +107,9 @@ export const onboarding = [
     },
 ];
 
-// export const data = {
-//     onboarding,
-// };
+export const HomeSwiperImages = [
+    {url: images.BannerThree},
+    {url: images.BannerFive},
+    {url: images.BannerTwo},
+    {url: images.BannerFour},
+];

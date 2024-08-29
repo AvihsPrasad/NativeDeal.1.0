@@ -1,10 +1,10 @@
-import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '@/constants'
 import InputField from '@/components/InputField'
 import CustomButton from '@/components/CustomButton'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import OAuth from '@/components/OAuth'
 
 export default function Signup() {
@@ -21,17 +21,23 @@ export default function Signup() {
     error: "",
     code: "",
   });
-  const onSignUpPress = async () => {}
+  const onSignUpPress = async () => {
+    return router.push('/(root)/(tabs)/home')
+  }
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView>
-          <View className='flex-1 bg-white h-full'>
-              <Image source={images.signUpCar} className='w-full' resizeMode="contain" />
-            <View className='relative w-full px-5 mb-5'>
-              <Text className='text-3xl text-black font-RobotoBold'>Create Your Account</Text>
+        <View className='flex bg-white pt-10' style={{height: Dimensions.get('window').height}}>
+          <ScrollView>
+              {/* <Image source={images.signUpImage} className='w-full h-[300px] mb-5' resizeMode="contain" /> */}
+            <View style={{justifyContent: 'center', alignItems: 'center'}}  className='w-full px-5 mb-5'>
+              <Text className='text-5xl text-black font-RobotoBold mb-5'>JOIN US</Text>
+              <Text className='text-3xl text-black font-RobotoBold'>Create your account</Text>
             </View>
+            {/* <View className='w-full px-5 mb-5'>
+              <Text className='text-3xl text-black font-RobotoBold'>Create Your Account</Text>
+            </View> */}
             <View className='px-5'>
               <InputField placeholder='Enter your name' value={form.name} onChangeText={(value) => setForm({...form, name: value})} />
               <InputField placeholder='Enter your Email' value={form.email} onChangeText={(value) => setForm({...form, email: value})} />
@@ -44,14 +50,14 @@ export default function Signup() {
               </Link>
               <CustomButton title='Sign Up' onPress={onSignUpPress} classname='mt-6' />
               {/* OAuth */}
-              {/* <OAuth /> */}
+              <OAuth />
               <Link href={'/sign-in'} className='text-sm text-center text-general-200 my-10'>
                 <Text>Already have an account? </Text>
-                <Text className='text-primary-500'>Log In</Text>
+                <Text className='text-primary-500 font-RobotoBold'>Log In</Text>
               </Link>
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
       </SafeAreaView>
     </>
   )
