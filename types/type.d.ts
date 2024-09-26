@@ -64,6 +64,7 @@ declare interface ButtonProps extends TouchableOpacityProps {
 declare interface HeaderProps extends TouchableOpacityProps {
     title?: string;
     user?: string;
+    userImage?: any;
     backArrow?: boolean;
     home?: boolean;
     onSearch?: any,
@@ -90,9 +91,11 @@ declare interface GoogleInputProps {
 
 declare interface InputFieldProps extends TextInputProps {
     label?: string;
+    Imageicon?: any;
     icon?: any;
     secureTextEntry?: boolean;
     labelStyle?: string;
+    disable?: boolean;
     containerStyle?: string;
     inputStyle?: string;
     iconStyle?: string;
@@ -143,7 +146,7 @@ declare interface DriverStore {
 }
 
 declare interface DriverCardProps {
-    item: MarkerData;
-    selected: number;
-    setSelected: () => void;
+    item?: MarkerData;
+    selected?: number;
+    setSelected?: () => void;
 }

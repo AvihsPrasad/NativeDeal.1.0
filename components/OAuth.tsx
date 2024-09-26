@@ -1,23 +1,25 @@
-// import { useOAuth } from "@clerk/clerk-expo";
+import { useOAuth } from "@clerk/clerk-expo";
 import { router } from "expo-router";
 import { Alert, Image, Text, View } from "react-native";
 
 import CustomButton from "@/components/CustomButton";
 import { icons } from "@/constants";
-// import { googleOAuth } from "@/lib/auth";
+import { googleOAuth } from "@/lib/auth";
 
 const OAuth = () => {
-//   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
 
   const handleGoogleSignIn = async () => {
-    // const result = await googleOAuth(startOAuthFlow);
+    const result = await googleOAuth(startOAuthFlow);
 
-    // if (result.code === "session_exists") {
-    //   Alert.alert("Success", "Session exists. Redirecting to home screen.");
-    //   router.replace("/(root)/(tabs)/home");
-    // }
+    if (result.code === "session_exists" && result.success) {
+      Alert.alert("Success", "Session exists. Redirecting to home screen.");
+      router.replace("/(root)/(tabs)/home");
+    }else{
+      Alert.alert(result.success ? "Success" : "Error", result.message);
+      console.log(result.success ? "Success" : "Error", result.message);
+    }
 
-    // Alert.alert(result.success ? "Success" : "Error", result.message);
   };
 
   return (
@@ -39,7 +41,7 @@ const OAuth = () => {
           />
         )}
         bgVariant="outline"
-        textVariant="primary"
+        textVariant="secondary"
         onPress={handleGoogleSignIn}
       />
     </View>

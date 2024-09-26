@@ -5,12 +5,13 @@ import Swiper from "react-native-swiper";
 import { router } from "expo-router";
 import { onboarding } from "@/constants";
 import CustomButton from "@/components/CustomButton";
+import OAuth from "@/components/OAuth";
 
 export default function Welcome() {
   const swiperRef = useRef<Swiper>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const isLastSlide = activeIndex === onboarding.length - 1;
-  return (
+  return (<>
     <SafeAreaView className="flex-1 h-full items-center justify-between bg-white">
       <TouchableOpacity
         onPress={() => router.push("/(auth)/sign-up")}
@@ -24,6 +25,7 @@ export default function Welcome() {
         dot={
           <View className="w-[32px] h-[4px] mx-1 bg-[#E2E8F0] rounded-full" />
         }
+        paginationStyle={{ position: 'absolute', backgroundColor: 'transparent', bottom: -10, left: 0, alignSelf: 'flex-end', justifyContent: 'center' }} 
         activeDot={
           <View className="w-[32px] h-[4px] mx-1 bg-[#0286FF] rounded-full" />
         }
@@ -52,12 +54,13 @@ export default function Welcome() {
           <CustomButton
             title={"SignUp"}
             bgVariant={"secondary"}
+            textVariant='secondary'
             onPress={() =>
               isLastSlide
                 ? router.push("/(auth)/sign-up")
                 : swiperRef.current?.scrollBy(1)
             }
-            classname="flex-1 mx-5 mt-10 mb-5"
+            classname="flex-1 ml-5 mr-1 mt-10 mb-5"
           />
           <CustomButton
             title={"LogIn"}
@@ -66,7 +69,7 @@ export default function Welcome() {
                 ? router.push("/(auth)/sign-in")
                 : swiperRef.current?.scrollBy(1)
             }
-            classname="flex-1 mt-10 mx-5 mb-5"
+            classname="flex-1 mt-10 mr-5 ml-1 mb-5"
           />
         </View>
       )}
@@ -82,6 +85,9 @@ export default function Welcome() {
       />
       }
     </SafeAreaView>
+      <View className="flex pb-8 px-5 bg-white">
+        <OAuth />
+      </View></>
   );
 }
 

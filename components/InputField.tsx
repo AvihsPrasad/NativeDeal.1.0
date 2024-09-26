@@ -14,11 +14,13 @@ import {
   const InputField = ({
     label,
     icon,
+    Imageicon,
     secureTextEntry = false,
     labelStyle,
     containerStyle,
     inputStyle,
     iconStyle,
+    disable = true,
     className,
     ...props
   }: InputFieldProps) => {
@@ -27,21 +29,23 @@ import {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View className="my-4 w-full">
-            {label && <Text className={`text-lg font-RobotoBold mb-3 ${labelStyle}`}>
+          <View className="mb-4 w-full">
+            {label && <Text className={`text-lg font-RobotoBold mb-1 ${labelStyle}`}>
               {label}
             </Text>
             }
             <View
-              className={`flex flex-row justify-start items-center relative bg-neutral-100 rounded-xl border border-neutral-100 focus:border-primary-500  ${containerStyle}`}
+              className={`flex flex-row justify-start items-center relative rounded-xl ${containerStyle? containerStyle :'border bg-neutral-100  border-neutral-100 focus:border-primary-500'}`}
             >
-              {icon && (
+              {Imageicon && (
                 <Image source={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />
               )}
+              {icon}
               <TextInput
-                className={`rounded-xl p-4 font-RobotoBold text-[15px] flex-1 ${inputStyle} text-left`}
+                className={`rounded-xl p-2 px-5 h-[50px] font-RobotoMedium text-[18px] flex-1 ${inputStyle} text-left`}
                 placeholderTextColor="#979dac"
                 secureTextEntry={secureTextEntry}
+                editable={disable}
                 {...props}
               />
             </View>
